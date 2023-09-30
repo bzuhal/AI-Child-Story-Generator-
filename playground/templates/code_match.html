@@ -1,0 +1,80 @@
+{% extends "layout/master.html" %}
+
+{%block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<!-- Page Header-->
+<style>
+    .form-group{
+        margin-bottom: 10px;
+    }
+</style>
+<!-- Main Content-->
+<div class="container px-4 px-lg-8">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <div class="login-wrap p-0">
+                    <form >
+                        <div class="form-group">
+                            <label for="first_name">MetaData</label>
+                            <input type="text" class="form-control" placeholder="First Name" name="first_name" required>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Last Name" name="last_name" required>
+                        </div> -->
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary submit px-3" value= "register">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    <textarea name="" id="" cols="30" rows="10"> query result</textarea> 
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-12">
+                <div class="login-wrap p-0">
+                    <form >
+                        <div class="form-group">
+                            <label for="first_name">MetaData</label>
+                            <input type="text" class="form-control" placeholder="First Name" name="first_name" required>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Last Name" name="last_name" required>
+                        </div> -->
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary submit px-3" value= "register">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script >
+
+document.addEventListener('DOMContentLoaded', function () {
+    const selectFolderButton = document.getElementById('selectFolder');
+    const selectedFolderSpan = document.getElementById('selectedFolder');
+
+    selectFolderButton.addEventListener('click', async () => {
+        try {
+            const folderHandle = await window.showDirectoryPicker();
+            const folderName = folderHandle.name;
+
+            selectedFolderSpan.textContent = folderName;
+        } catch (err) {
+            console.error('Error selecting folder:', err);
+        }
+    });
+});
+
+</script>
+
+{% endblock %}

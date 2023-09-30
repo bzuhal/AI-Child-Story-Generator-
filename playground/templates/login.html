@@ -1,0 +1,56 @@
+
+{% extends "layout/auth.html" %}
+
+{%block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+
+
+<!-- <form method = "POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    username:
+    <br/>
+    <input type="text" name="username" />
+    <br/>
+    Password:
+    <br/>
+    <input type="password" name="password" />
+    <br/>
+    <input class ="btn btn-primary" type="submit" value= "Login" />
+    <br/>
+</form> -->
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                <h3 class="mb-4 text-center">Have an account?</h3>
+                <form method = "POST" action="{% url 'login' %}" class="signin-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                    <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
+                    <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
+                    </div>
+                    {% if error %}
+                    {{ error }}
+                    <br/>
+                    <br/>
+                    {% endif %}
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary submit px-3" value= "Login">Login</button>
+                    </div>
+                </form>
+            <a href="/register"><p class="w-100 text-center">&mdash; register &mdash;</p></a>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

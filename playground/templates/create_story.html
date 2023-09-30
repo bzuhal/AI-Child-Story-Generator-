@@ -1,0 +1,84 @@
+
+{% extends "layout/master.html" %}
+
+{%block title %}
+Create Story
+{% endblock %}
+
+{% block content %}
+<!-- <div class="container px-4 px-lg-5">
+    <div class="col-xl-6 col-md-12">
+        <form >
+            {{ form }}
+            <div class="form-row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="your_name" name="your_name" value="{{ your_name }}">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="your_friend_name" name="your_friend_name" value="{{ your_friend_name }}">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="story_you_want" name="story_you_want" value="{{story_you_want}}">
+              </div>
+              <button type="submit" value="Submit">Submit</button>
+            </div>
+          </form>
+    </div>
+</div> -->
+<div class="container mt-5" style="margin-top: 140px !important; margin-bottom: 40px;">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="mb-0">Create Your Story</h4>
+          </div>
+          <div class="card-body">
+            <form action="/create_story/" method="post">
+                {% csrf_token %}
+              <div class="mb-3">
+                <label for="your_name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="your_name" name="your_name" value="{{ your_name }}" required>
+              </div>
+              <div class="mb-3">
+                <label for="your_friend_name" class="form-label">Friend's Name</label>
+                <input type="text" class="form-control" id="your_friend_name" name="your_friend_name" value="{{ your_friend_name }}" required>
+              </div>
+              <div class="mb-3">
+                <label for="story_you_want" class="form-label">Story you want?</label>
+                <input type="text" class="form-control" id="story_you_want" name="story_you_want" value="{{story_you_want}}" required>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Search <span class="fa fa-search"></span>
+              </button>
+              <!-- <i class="fa fa-heart-o" aria-hidden="true"></i> -->
+            </form>
+            {% if message %}
+            <div>
+              <p class="danger">{{ message }}</p>
+            </div>
+            {% endif %}
+            {% if story %}
+            <div class="margin-top: 10px;">
+                <!-- <button id="speakButton" class="btn btn-success btn-sm">
+                  Click to Speak <span class="fa fa-play"></span>
+                </button> -->
+                <audio controls>
+                  <source src="/static/assets/record_sound_{{history_entry.id}}.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div style="margin-top: 10px;text-align: justify;text-justify: inter-word;">
+                <p id="text-of-story">{{story}}</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}
+
+{% block shared %}
+<script>
+</script>
+{%endblock%}
